@@ -1,10 +1,26 @@
+import EventCard from "./components/EventCard";
+import ExploreBtn from "./components/ExploreBtn";
+import { events } from '@/lib/constants';
+
 export default function Home() {
   return (
-    <div className="bg-cyan-950 min-h-screen w-full flex justify-center items-center">
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="text-4xl font-bold mt-4 text-white">Welcome to Ptracker</h1>
-        <button type="button" className="rounded-xl bg-blue-600 text-white cursor-pointer px-4 py-2 mt-4 hover:bg-blue-500">Join Us</button>
+    <section>
+      <h1 className="text-center">The Hub for Every Dev <br/> Event you Can&apos;t Miss It</h1>
+      <p className="text-center mt-5">Hackerthon, Meetups and Conferences, All in One Place</p>
+
+      <ExploreBtn />
+
+      <div className="mt-20 space-y-7">
+        <h3>Featured Events</h3>
+
+        <ul className="events list-none">
+          {events.map((event) => (
+              <li key={event.title}>
+                <EventCard {...event}/>
+              </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </section>
   )
 }
